@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запрос на уведомления</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <h1>Разрешите уведомления</h1>
+    <button onclick="requestNotificationPermission()">Запросить разрешение</button>
+
+    <script>
+        function requestNotificationPermission() {
+            // Проверка, поддерживает ли браузер уведомления
+            if ('Notification' in window) {
+                // Запрос на разрешение отправки уведомлений
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === 'granted') {
+                        alert('Разрешение на уведомления предоставлено!');
+                    } else {
+                        alert('Разрешение на уведомления не предоставлено. Проверьте настройки браузера.');
+                    }
+                });
+            } else {
+                alert('Ваш браузер не поддерживает уведомления.');
+            }
+        }
+    </script>
+</body>
+</html>
